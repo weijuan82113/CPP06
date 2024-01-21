@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wchen <wchen@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/28 00:52:54 by wchen             #+#    #+#              #
-#    Updated: 2023/10/07 15:23:20 by wchen            ###   ########.fr        #
+#    Created: 2023/09/07 20:27:42 by wchen             #+#    #+#              #
+#    Updated: 2024/01/19 20:55:21 by wchen            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Account
+NAME = Replace
 
 # COMPILE FLAGS
-CXX			= c++
+CXX		= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-SRCS		= Account.cpp tests.cpp
-OBJS		= $(SRCS:%.cpp=%.o)
+SRCS	= main.cpp replace.cpp
+OBJS	= $(SRCS:%.cpp=%.o)
 
 all		: $(NAME)
 

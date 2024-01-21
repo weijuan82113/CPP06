@@ -1,16 +1,21 @@
 #include <iostream>
-#include <cctype>
-#include <cstring>
-#include <cstdio>
+#include <string>
 
 int main(int argc, char *argv[])
 {
-	(void)argc;
-	if (argv)
-		for (size_t i = 0; i < strlen(argv[1]); i ++)
-			putchar(toupper(argv[1][i]));
-	std::cout << '\n';
-	return 0;
+	if (argc == 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (0);
+	}
+	int i = 1;
+	while (argv[i])
+	{
+		std::string str(argv[i]);
+		std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+		std::cout << str;
+		i ++;
+	}
+	std::cout << std::endl;
+	return(0);
 }
-
-

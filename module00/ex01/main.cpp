@@ -12,22 +12,23 @@ int main (void)
 	{
 		std::cout << "Please input the command \"ADD\" \"SEARCH\" \"EXIT\" : ";
 		if(!std::getline(std::cin, cmd))
-			std::exit(EXIT_FAILURE);
+			std::exit(EXIT_SUCCESS);
 		if (cmd == "ADD")
 		{
-			book.add(i);
-			i = (i + 1) % 8;
+			if (book.add(i))
+				i = (i + 1) % 8;
 		}
 		else if (cmd == "SEARCH")
 		{
+			std::string 	input_index;
 			book.printInfo();
 			continuous = true;
 			while (continuous)
 			{
-				std::cout << "Please input index for 1 to 8" << std::endl;
-				if(!std::getline(std::cin, cmd))
-				std::exit(EXIT_FAILURE);
-				if(!book.printAllInfo(cmd))
+				std::cout << "Please input index for 1 to 8:" << std::endl;
+				if (!std::getline(std::cin, input_index))
+					std::exit(EXIT_SUCCESS);
+				if (!book.printAllInfo(input_index))
 					continuous = true;
 				else
 					continuous = false;

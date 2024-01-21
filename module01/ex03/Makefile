@@ -6,22 +6,22 @@
 #    By: wchen <wchen@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/26 20:22:33 by wchen             #+#    #+#              #
-#    Updated: 2023/08/30 21:07:21 by wchen            ###   ########.fr        #
+#    Updated: 2024/01/19 20:52:31 by wchen            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Human
 
 # COMPILE FLAGS
-CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98
+CXX		= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 SRCS	= HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 OBJS	= $(SRCS:%.cpp=%.o)
 
 all		: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAG) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 clean 	:
 	rm -rf $(OBJS)
