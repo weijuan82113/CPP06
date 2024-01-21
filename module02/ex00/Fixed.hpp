@@ -7,15 +7,13 @@ class Fixed
 	public :
 		Fixed();
 		~Fixed();
+		Fixed(const Fixed& copyClass);
+		Fixed& operator=(const Fixed& other);
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
-		Fixed(const Fixed& copy_class);
-		Fixed& operator=(const Fixed& other);
 	private :
 		int	_value;
-		static int const _frac_bit = 8;
+		static int const _fracBit = 8;
 };
-
-
 
 #endif
