@@ -4,12 +4,11 @@ NAME = Animal
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 SRCS		=	main.cpp \
-				Animal.cpp \
-				Cat.cpp \
-				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp \
-				Brain.cpp \
+				AMateria.cpp \
+				Character.cpp \
+				Cure.cpp \
+				Ice.cpp \
+
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
