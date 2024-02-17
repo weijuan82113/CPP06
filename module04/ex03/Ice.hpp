@@ -5,9 +5,14 @@
 
 class Ice : public AMateria
 {
-	Ice();
-	Ice& operator=(const Ice& other);
-	Ice* clone() const;
+	public :
+		Ice();
+		~Ice();
+		Ice(const Ice& copyClass);
+		Ice& operator=(const Ice& other);
+		Ice* clone() const;
+	private :
+		std::string iceType_;
 
 };
 

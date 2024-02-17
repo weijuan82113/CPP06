@@ -5,10 +5,14 @@
 
 class Cure : public AMateria
 {
-	Cure();
-	Cure& operator=(const Cure& other);
-	Cure* clone() const;
-
+	public :
+		Cure();
+		~Cure();
+		Cure(const Cure& copyClass);
+		Cure& operator=(const Cure& other);
+		Cure* clone() const;
+	private :
+		std::string cureType_;
 };
 
 #endif

@@ -1,8 +1,20 @@
 #include "Ice.hpp"
 
-Ice::Ice():AMateria()
+Ice::Ice():AMateria("Materia")
 {
-	this->type_ = "ice";
+	std::cout << "<Ice> constructor" << std::endl;
+	iceType_ = "ice";
+}
+
+Ice::~Ice()
+{
+	std::cout << "<Ice> destructor" << std::endl;
+}
+
+Ice::Ice(const Ice& copyClass)
+{
+	std::cout << "<Ice> copy constructor" << std::endl;
+	*this = copyClass;
 }
 
 Ice& Ice::operator=(const Ice& other)
@@ -10,12 +22,12 @@ Ice& Ice::operator=(const Ice& other)
 	std::cout << "<Ice> constructor" << std::endl;
 	if (this != &other)
 	{
-		this->type_ = other.type_;
+		iceType_ = other.iceType_;
 	}
 }
 
 Ice* Ice::clone() const
 {
-	Ice* clone = new Ice();
-	*clone = *this;
+	Ice* cloneobject = new Ice();
+	cloneobject->setType(getType());
 }

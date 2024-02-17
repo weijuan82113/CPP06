@@ -6,6 +6,17 @@ AMateria::AMateria()
 
 }
 
+AMateria::AMateria(std::string const& type)
+{
+	std::cout << "<AMateria> constructor" << std::endl;
+	setType(type);
+}
+
+void AMateria::setType(std::string type)
+{
+	type_ = type;
+}
+
 std::string const& AMateria::getType() const
 {
 	return (type_);

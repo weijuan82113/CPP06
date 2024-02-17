@@ -9,12 +9,13 @@ class AMateria
 {
 	public :
 		AMateria();
-		AMateria(std::string const & type);
-		std::string const & getType() const;
+		AMateria(std::string const& type);
+		std::string const& getType() const;
+		void setType(std::string type);
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
-
-	protected :
+		virtual AMateria* clone() const = 0;
+	private :
 		std::string type_;
 
 };
