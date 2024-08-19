@@ -1,4 +1,4 @@
-NAME = ConversionScalarType
+NAME = convert
 
 # COMPILE FLAGS
 CXX			=	c++
