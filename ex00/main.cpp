@@ -10,19 +10,7 @@ void testConversion(const std::string& str) {
     float f;
     double d;
 
-    std::istringstream ss(str);
-
-    // Convert to double
-    // ss.str(str);
-    // ss.clear();
-    ss >> d;
-
-    std::cout << "String: \"" << str << "\" to double: ";
-    if(ss.fail())
-        std::cout << "Conversion failed";
-    else
-        std::cout << std::setprecision(17) << d;
-    std::cout << std::endl;
+    std::stringstream ss(str);
 
     // Convert to char
     ss.str(str);
@@ -62,6 +50,18 @@ void testConversion(const std::string& str) {
         std::cout << std::setprecision(17) << f;
     std::cout << std::endl;
 
+    // Convert to double
+    ss.str(str);
+    ss.clear();
+    ss >> d;
+
+    std::cout << "String: \"" << str << "\" to double: ";
+    if(ss.fail())
+        std::cout << "Conversion failed";
+    else
+        std::cout << std::setprecision(17) << d;
+    std::cout << std::endl;
+
 }
 
 int main()
@@ -74,6 +74,9 @@ int main()
         testConversion(str);
         std::cout << "------------------------" << std::endl;
     }
+
+    //test_string_convert
+    ss
 
     return 0;
 }
