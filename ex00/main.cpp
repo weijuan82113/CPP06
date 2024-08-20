@@ -1,82 +1,64 @@
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <limits>
-#include <iomanip>
+#include "ScalarType.h"
 
-void testConversion(const std::string& str) {
-    char ch;
-    int i;
-    float f;
-    double d;
-
-    std::stringstream ss(str);
-
-    // Convert to char
-    ss.str(str);
-    ss.clear();
-    ss >> ch;
-    std::cout << "String: \"" << str << "\" to char: ";
-    if (ss.fail())
-        std::cout << "Conversion failed";
-    else
-    {
-        if (32 <= ch && ch <= 126)
-            std::cout << ch;
-        else
-            std::cout << "It's a non-printable variable";
-    }
-    std::cout << std::endl;
-
-    // Convert to int
-    ss.str(str);
-    ss.clear();
-    ss >> i;
-    std::cout << "String: \"" << str << "\" to int: ";
-    if (ss.fail())
-        std::cout << "Conversion failed";
-    else
-        std::cout << i;
-    std::cout << std::endl;
-
-    // Convert to float
-    ss.str(str);
-    ss.clear();
-    ss >> f;
-    std::cout << "String: \"" << str << "\" to float: ";
-    if (ss.fail())
-        std::cout << "Conversion failed";
-    else
-        std::cout << std::setprecision(17) << f;
-    std::cout << std::endl;
-
-    // Convert to double
-    ss.str(str);
-    ss.clear();
-    ss >> d;
-
-    std::cout << "String: \"" << str << "\" to double: ";
-    if(ss.fail())
-        std::cout << "Conversion failed";
-    else
-        std::cout << std::setprecision(17) << d;
-    std::cout << std::endl;
-
+bool ft_isPrintable(const std::string &str)
+{
+	const char* str_ptr = str.c_str();
+	while (*str_ptr)
+	{
+		if (*str_ptr < 33 || *str_ptr > 126)
+			return false;
+		str_ptr ++;
+	}
+	return true;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+	if (argc != 2)
+	{
+		std::cout << "Please intput one variable, like: ./convert <variable>" << std::endl;
+		return 1;
+	}
+	const std::string str(argv[1]);
+	if (!ft_isPrintable(str))
+	{
+		std::cout << "Please intput printable ASCII code" << std::endl;
+		return 1;
+	}
+	ScalarType converter;
+	//convert各データ型の関数を実行する
+	for(int i = 0 ; i < 4; i ++)
+	{
+		switch (i) {
+			case 0:
+			{
+				std::cout << "char: ";
+				std::cout << converter.convertToChar(argv[1]) << std::endl;
+				break;
+			}
+			case 1:
+			{
+				std::cout << "int: ";
+				std::cout << converter.convertToInt(argv[1]) << std::endl;
+				break;
+			}
+			case 2:
+			{
+				std::cout << "float: ";
+				std::cout << std::setprecision(8) << converter.convertToFloat(argv[1]) <<std::endl;
+				break;
+			}
+			case 3:
+			{
+				std::cout << "double: ";
+				std::cout << std::setprecision(16) << converter.convertToDouble(argv[1]) <<std::endl;
+				break;
+			}
+			default:
+				break;
+		}
+	}
+	//sstringでcovertがfail()するかをみる
 
-    std::string testStrings[] = {"あ","a","A","1.12","1.1234567890","0", "nan", "inff", "inf"};
-
-    for (size_t i = 0; i < sizeof(testStrings) / sizeof(testStrings[0]); ++i) {
-        const std::string& str = testStrings[i];
-        testConversion(str);
-        std::cout << "------------------------" << std::endl;
-    }
-
-    //test_string_convert
-    ss
-
-    return 0;
+	return 0;
 }
