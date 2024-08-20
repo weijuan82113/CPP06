@@ -3,6 +3,11 @@
 #include <sstream>
 #include <iomanip>
 
+#include "ScalarType.tpp"
+
+template <typename T>
+bool isInterger(T value);
+
 class ScalarType
 {
 	public:

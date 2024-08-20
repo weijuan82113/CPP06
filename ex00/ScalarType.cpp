@@ -18,7 +18,7 @@ std::string ScalarType::convertToChar(const std::string &str) const
 	ss << i_to_ch;
 
 	std::string ret_str = ss.str();
-	return ret_str;
+	return "'" + ret_str + "'";
 }
 
 std::string ScalarType::convertToInt(const std::string& str) const
@@ -47,11 +47,11 @@ std::string ScalarType::convertToFloat(const std::string& str) const
 	//ss_to_float successful
 	if (!ss.fail())
 	{
-		std::cout << "ss_to_float successful" << std::endl;
+		//std::cout << "ss_to_float successful" << std::endl;
 		ss.str("");
 		ss.clear();
 		ss << std::setprecision(8) << ss_to_f;
-		return ss.str();
+		return isInteger(ss_to_f) ? ss.str() + ".0f" : ss.str() + "f";
 	}
 	float ret_float = 0.0f;
 	if (isNan(str))
@@ -59,8 +59,8 @@ std::string ScalarType::convertToFloat(const std::string& str) const
 		//std::cout << "str is nan" << std::endl;
 		ret_float = std::numeric_limits<float>::quiet_NaN();
 	}
-	// ask how to do more simple if expression
-	if (isInf(str))
+	// ask how to do more simpler if expression
+	else if (isInf(str))
 	{
 		ret_float = *str.c_str() == '-' ?
 		-std::numeric_limits<float>::infinity() :
@@ -89,7 +89,7 @@ std::string ScalarType::convertToDouble(const std::string& str) const
 		ss.str("");
 		ss.clear();
 		ss << std::setprecision(16) << ss_to_d;
-		return ss.str();
+		return isInteger(ss_to_d) ? ss.str() + ".0" : ss.str();
 	}
 	double ret_double = 0.0;
 	if (isNan(str))
@@ -97,8 +97,8 @@ std::string ScalarType::convertToDouble(const std::string& str) const
 		//std::cout << "str is nan" << std::endl;
 		ret_double = std::numeric_limits<double>::quiet_NaN();
 	}
-	// ask how to do more simple if expression
-	if (isInf(str))
+	// ask how to do more simpler if expression
+	else if (isInf(str))
 	{
 		ret_double = *str.c_str() == '-' ?
 		-std::numeric_limits<double>::infinity() :
