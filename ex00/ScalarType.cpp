@@ -11,7 +11,6 @@ std::string ScalarType::convertToChar(const std::string &str) const
 		return "impossible";
 	if (ss_to_i < 33 || ss_to_i > 126)
 		return "Non displayable";
-	//if 3文字の入力　impossible
 	char i_to_ch = static_cast<char>(ss_to_i);
 	ss.str("");
 	ss.clear();
