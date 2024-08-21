@@ -1,40 +1,43 @@
-#include <stdint.h>
-#include <string>
-#include <iostream>
-#include <sstream>
-
-class Person {
-public:
-    std::string name;
-    int age;
-
-    void serialize(std::ostream& os) const {
-        os << name << ' ' << age;
-    }
-
-    void deserialize(std::istream& is) {
-        is >> name >> age;
-    }
-};
+#include "Serialize.h"
 
 int main()
 {
+	Data d("wchen", 18);
+	Serialize sl;
 
-	//uintptr_t uint_ptr;
+	std::cout << "------ before serialize ------" << std::endl;
 
-	//test serialize
-	Person person;
-	std::stringstream ss;
+	//show deserialized data's ptr
+	std::cout << "data ptr: "<< &d << std::endl;
+	//show data's name & age
+	std::cout << "the data name: "
+	<< d.getName() << "\n"
+	<< "the data age: "
+	<< d.getAge() << std::endl;
 
-	ss.str("");
-	ss.clear();
-	person.serialize(ss);
-	person.deserialize(ss);
-
-	
-	std::cout << "ss:" << ss.str() << std::endl;
-	std::cout << "name:" << person.name << std::endl;
-	std::cout << "age" << person.age << std::endl;
+	std::cout << "------ before serialize ------\n\n" << std::endl;
 
 
+
+	std::cout << "------ serialize ------" << std::endl;
+
+	uintptr_t data_to_uint = sl.serialize(&d);
+	std::cout << "uint: "<< data_to_uint << std::endl;
+
+	std::cout << "------ serialize ------\n\n" << std::endl;
+
+
+
+	std::cout << "------ after deserialize ------" << std::endl;
+
+	Data *uint_to_data_ptr = sl.deserialize(data_to_uint);
+	//show deserialized data's ptr
+	std::cout << "data ptr: "<< uint_to_data_ptr << std::endl;
+	//show deserialized data's name & age
+	std::cout << "the deserialize data name: "
+	<< uint_to_data_ptr->getName() << "\n"
+	<< "the deserialize data age: "
+	<< uint_to_data_ptr->getAge() << std::endl;
+
+	std::cout << "------ after deserialize ------" << std::endl;
 }
