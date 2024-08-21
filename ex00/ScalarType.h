@@ -19,5 +19,6 @@ class ScalarType
 		bool isNan(const std::string& str) const;
 		static bool isInf(const std::string& str);
 		static bool isInfStr(const std::string& str);
+		static bool isInt(const std::string& str);
 };
 

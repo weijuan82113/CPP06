@@ -7,7 +7,7 @@ std::string ScalarType::convertToChar(const std::string &str) const
 	int ss_to_i;
 	ss >> ss_to_i;
 
-	if (ss.fail())
+	if (ss.fail() || !isInt(str))
 		return "impossible";
 	if (ss_to_i < 33 || ss_to_i > 126)
 		return "Non displayable";
@@ -27,7 +27,8 @@ std::string ScalarType::convertToInt(const std::string& str) const
 	int ss_to_i;
 	ss >> ss_to_i;
 
-	if (ss.fail())
+	//13e10を弾く
+	if (ss.fail() || !isInt(str))
 		return "impossible";
 	ss.str("");
 	ss.clear();
@@ -159,4 +160,16 @@ bool ScalarType::isInfStr(const std::string& str)
 		return true;
 	else
 		return false;
+}
+
+bool ScalarType::isInt(const std::string& str)
+{
+	const char* str_ptr = str.c_str();
+	while(*str_ptr)
+	{
+		if (*str_ptr < '0' || *str_ptr > '9')
+			return false;
+		str_ptr ++;
+	}
+	return true;
 }
