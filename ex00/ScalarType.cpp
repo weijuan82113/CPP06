@@ -85,7 +85,7 @@ std::string ScalarType::convertToDouble(const std::string& str) const
 	//ss_to_double successful
 	if (!ss.fail())
 	{
-		//std::cout << "ss_to_double successful" << std::endl;
+		// std::cout << "ss_to_double successful" << std::endl;
 		ss.str("");
 		ss.clear();
 		ss << std::setprecision(16) << ss_to_d;

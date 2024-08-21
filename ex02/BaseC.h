@@ -5,7 +5,9 @@
 
 class BaseC : public Base
 {
-
+	public:
+		BaseC();
+		~BaseC();
 };
 
 #endif

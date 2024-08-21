@@ -4,6 +4,12 @@ NAME = identifyRealType
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 SRCS		=	main.cpp \
+				Base.cpp \
+				BaseA.cpp \
+				BaseB.cpp \
+				BaseC.cpp \
+				Identify.cpp \
+
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
