@@ -45,20 +45,19 @@ int main(int argc, char* argv[])
 			case 2:
 			{
 				std::cout << "float: ";
-				std::cout << std::setprecision(8) << converter.convertToFloat(argv[1]) <<std::endl;
+				std::cout << converter.convertToFloat(argv[1]) <<std::endl;
 				break;
 			}
 			case 3:
 			{
 				std::cout << "double: ";
-				std::cout << std::setprecision(16) << converter.convertToDouble(argv[1]) <<std::endl;
+				std::cout << converter.convertToDouble(argv[1]) <<std::endl;
 				break;
 			}
 			default:
 				break;
 		}
 	}
-	//sstringでcovertがfail()するかをみる
 
 	return 0;
 }

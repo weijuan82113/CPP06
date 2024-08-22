@@ -9,8 +9,8 @@ class Data
 		Data();
 		Data(std::string name, int age);
 		~Data();
-		Data(Data &d);
-		Data& operator=(Data &d);
+		Data(Data& d);
+		Data& operator=(Data& d);
 
 		std::string getName();
 		int getAge();
