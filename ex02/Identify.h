@@ -18,10 +18,10 @@ class Identify
 		Base* generate(void);
 		void identify(Base* p);
 		void identify(Base& p);
-		void print_base_type(int i);
-		void try_base_type(int i, Base& p);
 
 	private:
+		static void print_base_type(int i);
+		static void try_base_type(int i, Base& p);
 		static void initailize_rand();
 		static const int base_num;
 		static const int base_a;
