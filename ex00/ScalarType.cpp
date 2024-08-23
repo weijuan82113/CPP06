@@ -188,7 +188,9 @@ bool ScalarType::isInt(const std::string& str)
 	const char* str_ptr = str.c_str();
 	while(*str_ptr)
 	{
-		if ((*str_ptr < '0' || *str_ptr > '9') && *str_ptr != '.')
+		//!number && !(the expressin with alphabet like: 1.0,10e10)
+		if ((*str_ptr < '0' || *str_ptr > '9') &&
+		!(*str_ptr == '.' || *str_ptr == 'e' || *str_ptr == 'f' || *str_ptr == '+' || *str_ptr == '-'))
 			return false;
 		str_ptr ++;
 	}
