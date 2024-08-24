@@ -1,12 +1,11 @@
 #include "Identify.h"
 
 const int Identify::base_num = 3;
-const int Identify::base_a = 0;
-const int Identify::base_b = 1;
-const int Identify::base_c = 2;
+Identify::Initializer Initializer;
+
 
 void Identify::initailize_rand() {
-	srand(static_cast<unsigned int>(time(0)));
+	std::srand(static_cast<unsigned int>(time(0)));
 }
 
 Base* Identify::generate(void)
@@ -50,7 +49,8 @@ void Identify::identify(Base* p)
 
 void Identify::print_base_type(int i)
 {
-	switch(i)
+	base_type type = static_cast<base_type>(i);
+	switch(type)
 	{
 		case(base_a) :
 			std::cout << "identify in ptr cast: A" << std::endl;
@@ -75,7 +75,8 @@ void Identify::identify(Base& p)
 
 void Identify::try_base_type(int i, Base& p)
 {
-	switch(i)
+	base_type type = static_cast<base_type>(i);
+	switch(type)
 	{
 		case(base_a) :
 		{
