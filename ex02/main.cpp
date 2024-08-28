@@ -45,6 +45,6 @@ int main()
 	id.identify(*b);
 	std::cout << "----test---" << std::endl;
 	b->~Base();
-	//dynamic_casr;
+	//dynamic_cast;
 	return 0;
 }
